@@ -11,6 +11,11 @@ function AdminPanel(props) {
     console.log(searchItem);
   };
 
+  const favorite = (e) => {
+    props.favorite(e);
+    console.log(e);
+  };
+
   const filteredCoin = props.userData.filter((coin) => {
     return coin.symbol.toLowerCase().includes(searchItem.toLowerCase());
   });
@@ -18,7 +23,7 @@ function AdminPanel(props) {
   return (
     <div>
       <SearchBox searchChange={onSearchChange} />
-      <UserList userData={filteredCoin} usdt={props.usdt} />
+      <UserList userData={filteredCoin} usdt={props.usdt} favorite={favorite} />
     </div>
   );
 }
