@@ -1,9 +1,9 @@
 import User from "./User";
 
 function UserList(props) {
-  const favorite = (e) => {
-    props.favorite(e);
-    console.log(e);
+  const favorite = (name) => {
+    props.favorite(name);
+    console.log(name);
   };
 
   return (

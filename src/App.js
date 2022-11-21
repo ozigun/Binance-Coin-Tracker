@@ -9,28 +9,42 @@ import Favorite from "./pages/Favorite";
 function App() {
   const [data, setData] = useState([]);
   const [usdt, setUsdt] = useState([]);
-  const [favoriteCoin, setFavoriteCoin] = useState([]);
+  const [favoriteCoin, setFavoriteCoin] = useState([
+    {
+      id: "Favori Coinleriniz",
+      name: "00.00",
+    },
+  ]);
 
   let interval = null;
+  let interval2 = null;
 
   useEffect(() => {
     interval = setInterval(getData(), 1);
     getData();
-  }, []);
+    clearInterval();
+  });
 
   const usdCoin = data.filter((data) => {
     return data.symbol.toLowerCase().includes("usdt".toLowerCase());
   });
 
-  const favoriteFilteredCoin = favoriteCoin.filter((favoriteCoin) => {
-    return favoriteCoin.toLowerCase().includes(favoriteCoin.toLowerCase());
+  const favoriteFilteredCoin = data.map((i) => {
+    favoriteCoin.filter((favoriteCoin) => {
+      return favoriteCoin.id
+        .toLowerCase()
+        .includes(favoriteCoin.id.toLowerCase());
+    });
   });
-  const favCoin = [];
-  const favorite = (e) => {
-    favCoin.push(e);
+
+  const favCoin = favoriteCoin;
+
+  const favorite = (name) => {
+    favCoin.push(name);
     setFavoriteCoin(favCoin);
-    console.log(favCoin);
+    window.localStorage.setItem(name.id, name.name);
     console.log(favoriteCoin);
+    console.log(favoriteFilteredCoin);
   };
 
   function getData() {
@@ -46,13 +60,16 @@ function App() {
         setUsdt(response.data);
         console.log(usdt);
       });
+
+    data.map((user, i) => {
+      window.localStorage.setItem(data[i].symbol, data[i].price);
+    });
   }
 
   return (
     <div className="App">
       <Router>
         <NavBarHeader />
-
         <Routes>
           <Route
             path="/"
@@ -66,7 +83,7 @@ function App() {
               <Favorite
                 userData={usdCoin}
                 usdt={usdt}
-                favorite={favoriteFilteredCoin}
+                favorite={favoriteCoin}
               />
             }
           />

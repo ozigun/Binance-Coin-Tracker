@@ -11,9 +11,9 @@ function AdminPanel(props) {
     console.log(searchItem);
   };
 
-  const favorite = (e) => {
-    props.favorite(e);
-    console.log(e);
+  const favorite = (name) => {
+    props.favorite(name);
+    console.log(name);
   };
 
   const filteredCoin = props.userData.filter((coin) => {

@@ -1,12 +1,16 @@
-function FavoriteCard({ id, name, surname, username, email, address, birth }) {
+function FavoriteCard({ id, name }) {
   return (
-    <tbody className="alert-warning border border-warning">
-      <tr className="border border-warning">
-        <th className="border border-warning">{id}</th>
-        <td className="border border-warning">{name}</td>
-        <td className="border border-warning">Favori</td>
-      </tr>
-    </tbody>
+    <div className="col">
+      <div
+        class="card border-warning mb-3"
+        style={{ width: "10rem", height: "10rem" }}
+      >
+        <div class="card-body text-warning">
+          <h5 class="card-title">{id}</h5>
+          <p class="card-text">{name}</p>
+        </div>
+      </div>
+    </div>
   );
 }
 export default FavoriteCard;

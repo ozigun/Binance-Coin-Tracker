@@ -5,7 +5,7 @@ import FavoriteList from "../component/AdminPanel/FavoriteList";
 function Favorite(props) {
   return (
     <div>
-      <FavoriteList favorite={props.favorite} usdt={props.usdt} />
+      <FavoriteList favorite={props.favorite} />
     </div>
   );
 }
