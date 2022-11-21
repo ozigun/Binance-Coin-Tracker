@@ -12,7 +12,7 @@ function App() {
   const [favoriteCoin, setFavoriteCoin] = useState([
     {
       id: "Favori Coinleriniz",
-      name: "00.00",
+      name: 0,
     },
   ]);
 
